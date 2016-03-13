@@ -13,5 +13,6 @@
     <module>ConfigurationService</module>
 	<module>BuildService</module>
 	<module>VmWareService</module>
+	<module>Web</module>
   </modules>
 </project>

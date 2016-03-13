@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/template/layout.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+    <ui:define name="title">
+        Configuration
+    </ui:define>
+
+    <ui:define name="content">
+        <style>
+            .colKey {
+                width: 20%;
+            }
+            .colValue {
+                width: 60%;
+            }
+            .changeButton {
+                text-align: right;
+                width: 100%;
+                display: inline-block;
+            }
+        </style>
+    
+        <h1>#{configurationBean.param}</h1>
+        <h:dataTable value="#{configurationBean.values}" var="value" 
+                     styleClass="table table-striped table-bordered table-hover"
+                     columnClasses="colKey,colValue">
+            <h:column>
+                    <f:facet name="header">Key</f:facet>
+                    #{value.key}
+            </h:column>			
+            <h:column>
+                    <f:facet name="header">Value</f:facet> 
+                    #{value.value}<span class="changeButton"><button type="button"  jsf:outcome="configuration-change?service=#{param['service']}&amp;key=#{value.value}" class="btn btn-primary btn-xs">Change</button></span>
+            </h:column>
+        </h:dataTable>
+    </ui:define>
+</ui:composition>
